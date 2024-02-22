@@ -1,0 +1,52 @@
+Lets suppose there are two project located at two different repositories:
+
+Project_A: https://github.com/itanujsingh/Project_A
+
+Project_B: https://github.com/itanujsingh/Project_B
+
+Lets assume that Project_A contains a library and it is needed in Project_B.
+
+There are two ways to integrate Project_A code into Project_B.
+
+1st Approach: A simplest one
+Copy Project_A code and paste it inside Project_B. This is very simple, isn't it ?
+
+After some time, A minor bug was reported for Project_A library and got fixed immediately.
+Now the Project_B should also get the new changes made for Project_A library.
+We can copy again whole Project_A (updated one), Paste and replace Project_A code inside Project_B.
+
+Now let's assume that Project_A is regularly updated with either a new feature or bug fixes, copying the code and pasting inside Project_B will be challeging considering major changes and sometime we might need to jump back to previous released code of Project_A to test something. This could be more challenging and time consuming.
+
+For this we may choose 2nd Approach.
+
+2nd Approach:
+
+Project_B uses Project_A as a submodule, doing so will make our job easy if we need to pull latest changes of Project_A.
+
+In order to add Project_A as sobmodule for Project_B below steps needs to be followed:
+
+1. git clone https://github.com/itanujsingh/Project_B
+
+2. git submodule add https://github.com/itanujsingh/Project_A
+
+This will clone the Project_A code inside Project_B folder.
+This command will also create a file to keep a record or entry of added submodule.
+This command will copy the "main" branch.
+
+3. git commit -a -m "Adding Project_A as submodule"
+
+This command will commit unstaged modified file skipping adding modified file(s) to staged area.
+
+4. cd Project_A
+
+To checkout different branch of submodule Project_A
+
+4. cd Project_A
+
+5. git checkout dev
+
+This will checkout "dev" branch of Project_A.
+
+To Pull latest changes from "dev" branch of Project_A
+
+6. git pull
